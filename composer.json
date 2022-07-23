@@ -1,0 +1,23 @@
+{
+    "name": "alimansi/electronicshop",
+    "description": "this is a php oop application",
+    "autoload": {
+        "psr-4": {
+            "Alimansi\\Electronicshop\\": "src/",
+            "App\\": "app/",
+            "Resource\\": "Resource/"
+        },
+        "files": [
+            "app/function.php",
+            "./config.php",
+            "./__PATH__.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "alimansi1382",
+            "email": "92879191+alimansi1382@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
