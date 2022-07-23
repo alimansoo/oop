@@ -6,4 +6,7 @@ class RegisterController{
     public static function Index(){
         View::IncludeMainPage("register");
     }
+    public static function Register(){
+        View::IncludeMainPage("register");
+    }
 }

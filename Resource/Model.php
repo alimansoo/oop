@@ -1,5 +1,6 @@
 <?php
 namespace Resource;
+use App\Classes\db;
 abstract class Model
 {
     public $DataBody=array();
@@ -35,6 +36,16 @@ abstract class Model
             return;
         }
 
+    }
+    public function All(){
+        $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
+        $query = "SELECT * FROM {$this->TBNAME}";
+        try{
+            $result = $cdb->query($query)->fetchAll();
+        } catch (\Throwable $th) {
+            throw new Exception("Your DBNAME property is incorrect", 1);
+        }
+        return $result;
     }
     public function __get($name)
     {
