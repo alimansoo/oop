@@ -7,6 +7,7 @@ namespace App\Controllers\Admin;
 use App\Classes\View;
 use App\models\Product;
 use App\models\User;
+use App\Models\UserTypes;
 use Resource\ControllerInterface;
 
 class AdminDashboard implements ControllerInterface
@@ -24,8 +25,14 @@ class AdminDashboard implements ControllerInterface
     }
     public static function ListProduct($data = null)
     {
-        $user = new Product();
-        $data = $user->All();
+        $product = new Product();
+        $data = $product->All();
         View::IncludeAdminPage('listproduct',$data);
+    }
+    public static function ListUserTypes($data = null)
+    {
+        $usertype = new UserTypes();
+        $data = $usertype->All();
+        View::IncludeAdminPage('listusertype',$data);
     }
 }

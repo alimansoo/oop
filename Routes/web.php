@@ -27,5 +27,6 @@ Route::get('userpanel',UserPanelController::class,'Index');
 Route::get('admin',AdminDashboard::class,'Index');
 Route::get('admin/listuser',AdminDashboard::class,'ListUser');
 Route::get('admin/listproduct',AdminDashboard::class,'ListProduct');
+Route::get('admin/listtypes',AdminDashboard::class,'ListUserTypes');
 
 Route::go($router);

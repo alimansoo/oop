@@ -42,35 +42,31 @@
                             </thead>
                             <tbody>
                             <?php
-                                $verifStates = [
-                                        0=>'<span class="badge badge-danger">انجام نشده</span>',
-                                        1=>'<span class="badge badge-warning">ارسال مدارک</span>',
-                                        2=>'<span class="badge badge-success">تایید مدارک</span>',
-                                ];
-                                $activeStates = [
-                                        0=>'<span class="badge badge-danger">غیر فعال</span>',
-                                        1=>'<span class="badge badge-success">فعال</span>',
-                                ];
-                                $userTypes = [
-                                        1=>'فروشنده',
-                                        2=>'ادمین',
-                                        3=>'مشتری',
-                                ];
-                                foreach ($data as $value){
-                                    echo '
+                            $boolTypes = [
+                                0=>'<span class="badge badge-danger">انجام نشده</span>',
+                                1=>'<span class="badge badge-warning">ارسال مدارک</span>'
+                            ];
+                            foreach ($data as $value){
+                                echo '
                                         <tr>
                                             <td><i class="fa-2x fa fa-user"></i></td>
                                             <td>'.$value["id"].'</td>
-                                            <td>'.$value["fname"].' '.$value['lname'].'</td>
-                                            <td>'.$value["email"].'</td>
-                                            <td>0'.$value["phone"].'</td>
-                                            <td>'.$verifStates[$value["verifStatus"]].'</td>
-                                            <td>'.$userTypes[$value["usertypeId"]].'</td>
-                                            <td>'.$activeStates[$value['isActive']].'</td>
+                                            <td>'.$value["title"].'</td>
+                                            <td>'.$value["AdminPanel"].'</td>
+                                            <td>'.$value["title"].'</td>
+                                            <td>'.$value["addproduct"].'</td>
+                                            <td>'.$value["delproduct"].'</td>
+                                            <td>'.$value["editproduct"].'</td>
+                                            <td>'.$value["adduser"].'</td>
+                                            <td>'.$value["deluser"].'</td>
+                                            <td>'.$value["edituser"].'</td>
+                                            <td>'.$value["addcategory"].'</td>
+                                            <td>'.$value["delcategory"].'</td>
+                                            <td>'.$value["changeslide"].'</td>
                                             <td>ویرایش/حذف</td>
                                         </tr>
                                     ';
-                                }
+                            }
                             ?>
 
                             <?php?>
