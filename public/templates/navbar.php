@@ -3,7 +3,7 @@
         <i class="fas fa-bars sidebar-icon" id="humberger" data-bind="mainsidebar"></i>
         <ul class="navbar_list d-flex align-content-center" id="desktopnavigation">
             <li class="navbar_list_item">
-                <a href="http://localhost/KalaChio/category" class="link ajaxmainContent">
+                <a href="http://localhost/ElectronicShop/category" class="link ajaxmainContent">
                     <i class="fa-solid fa-border-all"></i>دسته بندی
 </a>
             </li>

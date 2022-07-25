@@ -5,10 +5,12 @@ namespace App\Controllers\Admin;
 
 
 use App\Classes\View;
+use App\Models\Order;
 use App\models\Product;
 use App\models\User;
 use App\Models\UserTypes;
 use Resource\ControllerInterface;
+use App\Models\Category;
 
 class AdminDashboard implements ControllerInterface
 {
@@ -34,5 +36,17 @@ class AdminDashboard implements ControllerInterface
         $usertype = new UserTypes();
         $data = $usertype->All();
         View::IncludeAdminPage('listusertype',$data);
+    }
+    public static function ListCatgory($data = null)
+    {
+        $usertype = new Category();
+        $data = $usertype->All();
+        View::IncludeAdminPage('listcategory',$data);
+    }
+    public static function ListOrders($data = null)
+    {
+        $usertype = new Order();
+        $data = $usertype->All();
+        View::IncludeAdminPage('listorders',$data);
     }
 }

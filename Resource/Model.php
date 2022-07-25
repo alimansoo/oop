@@ -7,39 +7,35 @@ abstract class Model
     public $ISLIMITED=false;
     public function __construct($data=null)
     {
-        if ($data === null) {
-            return;
-        }elseif (is_numeric($data) or is_int($data)) {
-            //if set id by find model
-            if (isset($this->DBNAME)) {
-                $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
-                $query = "SELECT * FROM `{$this->DBNAME}` WHERE id=$data";
-                try{
-                    $result = $cdb->query($query)->fetchArray();
-                } catch (\Throwable $th) {
-                    throw new Exception("Your DBNAME property is incorrect", 1);
-                }
-                if ($result and count($result)>0) {
-                    foreach ($result as $key => $value) {
-                        $this->setDataBodyValue($key,$value);
-                    }
-                }
-                $cdb->close();
-            }else{
-                throw new Exception("You should set DBNAME property for you model", 1);
-            }
-        } elseif (is_array($data)) {
-            //if set array by set model
-            foreach ($data as $key => $value) {
-                $this->setDataBodyValue($key,$value);
-            }
-            return;
-        }
-
+        $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
+        $query = "SELECT * FROM {$this->TBNAME} WHERE {$this->PrimaryKey}='{$data}'";
+        $result = $cdb->query($query)->fetchArray();
+        $this->DataBody = $result;
+    }
+    public function IsExist(){
+        if (count($this->DataBody)>0)
+            return true;
+        return false;
     }
     public function All(){
         $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
         $query = "SELECT * FROM {$this->TBNAME}";
+        try{
+            $result = $cdb->query($query)->fetchAll();
+        } catch (\Throwable $th) {
+            throw new Exception("Your DBNAME property is incorrect", 1);
+        }
+        return $result;
+    }
+    public function AllBy($where){
+        $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
+        $query = "SELECT * FROM {$this->TBNAME} WHERE ";
+        $whering = [];
+        foreach ($where as $key=>$value){
+            $whering[] = $key."='".$value."'";
+        }
+        $query.=implode(" AND ",$whering);
+//        echo $query;
         try{
             $result = $cdb->query($query)->fetchAll();
         } catch (\Throwable $th) {
@@ -115,5 +111,10 @@ abstract class Model
 
         $cdb->close();
         return $return;
+    }
+    public function __toString()
+    {
+        return $this->DataBody;
+
     }
 }

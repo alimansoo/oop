@@ -184,8 +184,17 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                              with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item has-treeview">
+                            <a href="http://localhost/ElectronicShop/admin" class="nav-link active">
+                                <i class="nav-icon fa fa-dashboard"></i>
+                                <p>
+                                    داشبورد
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-dashboard"></i>
                                 <p>
                                     کاربران
@@ -194,13 +203,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="http://localhost/ElectronicShop/admin/listuser" class="nav-link active">
+                                    <a href="http://localhost/ElectronicShop/admin/listuser" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست کاربران</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
+                                    <a href="http://localhost/ElectronicShop/admin/listtypes" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>انواع کاربران</p>
                                     </a>
@@ -223,9 +232,43 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
+                                    <a href="http://localhost/ElectronicShop/admin/listcatgory" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>دسته بندی ها</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-pie-chart"></i>
+                                <p>
+                                     سفارشات
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="http://localhost/ElectronicShop/admin/listproduct" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>لیست سفارشات</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-pie-chart"></i>
+                                <p>
+                                     تخفيف
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="http://localhost/ElectronicShop/admin/listproduct" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>كد تخفيف</p>
                                     </a>
                                 </li>
                             </ul>

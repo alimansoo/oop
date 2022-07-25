@@ -31,41 +31,39 @@
                             <tr>
                                 <th>تصویر</th>
                                 <th>شناسه</th>
-                                <th>عنوان محصول</th>
-                                <th>قیمت</th>
-                                <th>دسته بندی</th>
+                                <th>نام</th>
+                                <th>نام فارسی</th>
                                 <th>تغییرات</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
-                            $categorys = [
-                                    1=>'لپ تاب',
-                                    2=>'موبایل',
-                                    3=>'ساعت هوشمند',
-                                    4=>'تبلت'
-                            ];
-                            foreach ($data as $value){
-                                echo '
+                                $verifStates = [
+                                        0=>'<span class="badge badge-danger">انجام نشده</span>',
+                                        1=>'<span class="badge badge-warning">ارسال مدارک</span>',
+                                        2=>'<span class="badge badge-success">تایید مدارک</span>',
+                                ];
+                                foreach ($data as $value){
+                                    echo '
                                         <tr>
-                                            <td><img width="50px" src="'.$value["imgSrc"].'"/></td>
+                                            <td><img width="50px" src="'.$value["ImgSrc"].'"/></td>
                                             <td>'.$value["id"].'</td>
-                                            <td>'.$value["title"].'</td>
-                                            <td> '.number_format($value["price"]).'تومان </td> 
-                                            <td>'.$categorys[$value["categoryId"]].'</td>
+                                            <td>'.$value["Name"].'</td>
+                                            <td>'.$value["persianName"].'</td>
                                             <td>ویرایش/حذف</td>
                                         </tr>
                                     ';
-                            }
+                                }
                             ?>
+
+                            <?php?>
                             </tbody>
                             <tfoot>
                             <tr>
                                 <th>تصویر</th>
                                 <th>شناسه</th>
-                                <th>عنوان محصول</th>
-                                <th>قیمت</th>
-                                <th>دسته بندی</th>
+                                <th>نام</th>
+                                <th>نام فارسی</th>
                                 <th>تغییرات</th>
                             </tr>
                             </tfoot>

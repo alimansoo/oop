@@ -30,13 +30,17 @@
                             <thead>
                             <tr>
                                 <th> آواتار</th>
-                                <th>شناسه</th>
-                                <th>نام</th>
-                                <th>ایمیل</th>
-                                <th>موبایل</th>
-                                <th>احراز هویت</th>
-                                <th>نوع کاربر</th>
-                                <th>فعال</th>
+                                <th>#</th>
+                                <th>دسترسی ادمین</th>
+                                <th>اضافه کردن محصول</th>
+                                <th>حذف محصول</th>
+                                <th>ویرایش محصول</th>
+                                <th>اضافه کاربر</th>
+                                <th>حذف کاربر</th>
+                                <th>ویرایش کاربر</th>
+                                <th>اضافه دسته بندی</th>
+                                <th>حذف دسته بندی</th>
+                                <th>تغییر دسترسی ها</th>
                                 <th>تغییرات</th>
                             </tr>
                             </thead>
@@ -50,10 +54,8 @@
                                 echo '
                                         <tr>
                                             <td><i class="fa-2x fa fa-user"></i></td>
-                                            <td>'.$value["id"].'</td>
                                             <td>'.$value["title"].'</td>
                                             <td>'.$value["AdminPanel"].'</td>
-                                            <td>'.$value["title"].'</td>
                                             <td>'.$value["addproduct"].'</td>
                                             <td>'.$value["delproduct"].'</td>
                                             <td>'.$value["editproduct"].'</td>
@@ -62,7 +64,7 @@
                                             <td>'.$value["edituser"].'</td>
                                             <td>'.$value["addcategory"].'</td>
                                             <td>'.$value["delcategory"].'</td>
-                                            <td>'.$value["changeslide"].'</td>
+                                            <td>'.$value["changepermition"].'</td>
                                             <td>ویرایش/حذف</td>
                                         </tr>
                                     ';
@@ -74,13 +76,17 @@
                             <tfoot>
                             <tr>
                                 <th> آواتار</th>
-                                <th>شناسه</th>
-                                <th>نام</th>
-                                <th>ایمیل</th>
-                                <th>موبایل</th>
-                                <th>احراز هویت</th>
-                                <th>نوع کاربر</th>
-                                <th>فعال</th>
+                                <th>#</th>
+                                <th>دسترسی ادمین</th>
+                                <th>اضافه کردن محصول</th>
+                                <th>حذف محصول</th>
+                                <th>ویرایش محصول</th>
+                                <th>اضافه کاربر</th>
+                                <th>حذف کاربر</th>
+                                <th>ویرایش کاربر</th>
+                                <th>اضافه دسته بندی</th>
+                                <th>حذف دسته بندی</th>
+                                <th>تغییر دسترسی ها</th>
                                 <th>تغییرات</th>
                             </tr>
                             </tfoot>

@@ -2,7 +2,7 @@
 namespace App\Classes;
 class View
 {
-    static function IncludeMainPage($view)
+    static function IncludeMainPage($view,$data=null)
     {
         include 'C:\xampp\htdocs\ElectronicShop\public\views\Page\MainPage.php';
     }
