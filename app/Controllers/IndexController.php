@@ -6,4 +6,7 @@ class IndexController implements ControllerInterface{
     public static function Index($data=null){
         View::IncludeMainPage('home');
     }
+    public static function Message(){
+        View::IncludeMainPage('message');
+    }
 }

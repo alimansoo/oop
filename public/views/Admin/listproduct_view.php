@@ -22,7 +22,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">کاربران</h3>
+                        <h3 class="card-title mb-4">کاربران</h3>
+                        <a href="http://localhost/ElectronicShop/admin/addproduct" class="btn btn-primary">اضافه کردن محصول</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -53,7 +54,10 @@
                                             <td>'.$value["title"].'</td>
                                             <td> '.number_format($value["price"]).'تومان </td> 
                                             <td>'.$categorys[$value["categoryId"]].'</td>
-                                            <td>ویرایش/حذف</td>
+                                            <td>
+                                            <a href="http://localhost/ElectronicShop/admin/delproduct/'.$value["id"].'">حذف</a>
+                                            /<a href="http://localhost/ElectronicShop/admin/editproduct/'.$value["id"].'">ویرایش</a>
+</td>
                                         </tr>
                                     ';
                             }

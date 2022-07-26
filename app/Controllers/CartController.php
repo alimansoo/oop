@@ -12,7 +12,7 @@ class CartController implements ControllerInterface{
     {
         if(Authentication::Logedin()){
             $cart = new Cart();
-            $result = $cart->AllBy(['UserId'=>$_SESSION['email']]);
+            $result = $cart->AllBy(['UserId'=>$_SESSION['id']]);
             $products = [];
             foreach ($result as $value){
                 $product = new Product($value['ProductId']);
@@ -23,6 +23,27 @@ class CartController implements ControllerInterface{
         }else{
             Header::redirectTo('http://localhost/ElectronicShop/login');
         }
+    }
+    public static function AddCart($productId){
+        if ($productId === 'null'){
+            return ;
+        }
+        if(Authentication::Logedin()){
+            $cart = new Cart();
+            $result = $cart->findBy(
+                ['ProductId'=>$productId,'UserId'=>$_SESSION['id']]
+            );
+            if (count($result) > 0){
 
+            }else{
+                $cart->ProductId = $productId;
+                $cart->UserId = $_SESSION['id'];
+                $cart->qty = 1;
+                $cart->Add();
+            }
+            Header::redirectTo('http://localhost/ElectronicShop/cart');
+        }else{
+            Header::redirectTo('http://localhost/ElectronicShop/login');
+        }
     }
 }

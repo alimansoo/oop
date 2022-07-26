@@ -7,4 +7,5 @@ use Resource\Model;
 class Cart extends Model
 {
     public $TBNAME = 'cards';
+    protected $PrimaryKey = 'id';
 }

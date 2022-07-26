@@ -23,59 +23,56 @@
                             </div>';
                     }else{
                         foreach ($data as $product){
-                        echo '
-                            <div class="card rounded-3 mb-4">
-                                <div class="card-body p-4">
-                                    <div class="row d-flex justify-content-between align-items-center">
-                                        <div class="col-md-2 col-lg-2 col-xl-2">
-                                            <img
-                                                src="'.$product->imgSrc.'"
-                                                class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                        </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-3">
-                                            <p class="lead fw-normal mb-2">'.$product->title.'</p>
-                                            <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
-                                        </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <button class="btn btn-link px-2">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-            
-                                            <div id="form1" min="0" name="quantity"
-                                                   class="form-control form-control-sm" >'.$product->qty.'</div>
-            
-                                            <button class="btn btn-link px-2">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                            <h5 class="mb-0">'.number_format($product->price).'تومان</h5> 
-                                        </div>
-                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                            <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                            echo '
+                                <div class="card rounded-3 mb-4">
+                                    <div class="card-body p-4">
+                                        <div class="row d-flex justify-content-between align-items-center">
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <img
+                                                    src="'.$product->imgSrc.'"
+                                                    class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                            </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                <p class="lead fw-normal mb-2">'.$product->title.'</p>
+                                                <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                                            </div>
+                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                <button class="btn btn-link px-2">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                
+                                                <div id="form1" min="0" name="quantity"
+                                                       class="form-control form-control-sm" >'.$product->qty.'</div>
+                
+                                                <button class="btn btn-link px-2">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h5 class="mb-0">'.number_format($product->price).'تومان</h5> 
+                                            </div>
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>';
+                                
+                                ';
                         }
+                        echo '<div class="card mb-4">
+                                    <div class="card-body">
+                                        <a href="http://localhost/ElectronicShop/order" class="btn btn-warning btn-block btn-lg">ادامه سبد خرید</a>
+                                    </div>
+                                </div>';
                     }
                 ?>
-
                 <div class="card mb-4">
-                    <div class="card-body p-4 d-flex flex-row">
-                        <div class="form-outline mb-4">
-                            <input type="email" class="form-controll" name="email" id="email">
-                            <label for="email" class="form-label">كد تخفيف</label>
-                        </div>
-                        <button type="button" class="btn btn-outline-warning btn-lg ms-3">اعمال</button>
+                    <div class="card-body">
+
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-body">
-                        <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
-                    </div>
-                </div>
 
             </div>
         </div>

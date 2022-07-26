@@ -23,6 +23,24 @@ class Route
             'method'=>$method
         ];
     }
+    static public function delete(string $path,$class,$method){
+        self::$routs[] =
+        [
+            'Requestmethod'=>'DELETE',
+            'url'=>$path,
+            'class'=>$class,
+            'method'=>$method
+        ];
+    }
+    static public function put(string $path,$class,$method){
+        self::$routs[] =
+        [
+            'Requestmethod'=>'PUT',
+            'url'=>$path,
+            'class'=>$class,
+            'method'=>$method
+        ];
+    }
     static public function go($router){
         $method = $_SERVER['REQUEST_METHOD'];
         foreach (self::$routs as $key => $value) {
@@ -45,7 +63,6 @@ class Route
                     $keyD = str_replace("{","",$subdata);
                     $keyD = str_replace("}","",$keyD);
                     $valueD = substr($router." ",$beginIndex,$endIndex-strlen($url));
-//                    self::$data[$keyD] = $valueD;
                     $class = $value['class'];
                     $fun = $value['method'];
                     $class::$fun($valueD);
@@ -60,37 +77,5 @@ class Route
         }
         Exeptions::notfound();
         return;
-    }
-    static function redirect_to($path){
-        if (is_null($path)) {
-            return;
-        }
-        header("Location:$path");
-    }
-    static function redirect_to_url($path)
-    {
-        Rout::redirect_to(
-            Rout::full_url($path)
-        );
-    }
-    static function url($path = null)
-    {
-        if (!isset(PAGE_URLS[$path])) {
-            return;
-        }
-        if (is_null($path)) {
-            return PAGE_URLS['home']['url'];
-        }
-        return PAGE_URLS[$path]['url'];
-    }
-    static function full_url($path = null)
-    {
-        if (!isset(PAGE_URLS[$path])) {
-            return;
-        }
-        if (is_null($path)) {
-            return SITE_URL.PAGE_URLS['home']['url'];
-        }
-        return SITE_URL.PAGE_URLS[$path]['url'];
     }
 }

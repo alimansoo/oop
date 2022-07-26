@@ -1,5 +1,6 @@
 <?php
 namespace App\Controllers;
+use App\Classes\db;
 use App\Classes\View;
 use App\models\Product;
 use App\Models\Category;

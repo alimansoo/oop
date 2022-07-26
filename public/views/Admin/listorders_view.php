@@ -44,8 +44,8 @@
                             <tbody>
                             <?php
                                 $payedStates = [
-                                        0=>'<span class="badge badge-success">پرداخت شده</span>',
-                                        1=>'<span class="badge badge-danger">پرداخت نشده</span>',
+                                        1=>'<span class="badge badge-success">پرداخت شده</span>',
+                                        0=>'<span class="badge badge-danger">پرداخت نشده</span>',
                                 ];
                                 $statusStates = [
                                         0=>'<span class="badge badge-dark">ثبت شده</span>',
@@ -64,7 +64,10 @@
                                             <td>'.$value["reciverDate"].'</td>
                                             <td>'.$value["savedDate"].'</td>
                                             <td>'.number_format($value["transportPrice"]).'</td>
-                                            <td>ویرایش/حذف</td>
+                                            <td>
+                                                <a href="">حذف</a>/
+                                                <a href="">ویرایش</a>
+                                            </td>
                                         </tr>
                                     ';
                                 }

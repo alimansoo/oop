@@ -7,10 +7,12 @@ abstract class Model
     public $ISLIMITED=false;
     public function __construct($data=null)
     {
-        $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
-        $query = "SELECT * FROM {$this->TBNAME} WHERE {$this->PrimaryKey}='{$data}'";
-        $result = $cdb->query($query)->fetchArray();
-        $this->DataBody = $result;
+        if ($data !== null){
+            $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
+            $query = "SELECT * FROM {$this->TBNAME} WHERE {$this->PrimaryKey}='{$data}'";
+            $result = $cdb->query($query)->fetchArray();
+            $this->DataBody = $result;
+        }
     }
     public function IsExist(){
         if (count($this->DataBody)>0)
@@ -35,9 +37,23 @@ abstract class Model
             $whering[] = $key."='".$value."'";
         }
         $query.=implode(" AND ",$whering);
-//        echo $query;
         try{
             $result = $cdb->query($query)->fetchAll();
+        } catch (\Throwable $th) {
+            throw new Exception("Your DBNAME property is incorrect", 1);
+        }
+        return $result;
+    }
+    public function findBy($where){
+        $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
+        $query = "SELECT * FROM {$this->TBNAME} WHERE ";
+        $whering = [];
+        foreach ($where as $key=>$value){
+            $whering[] = $key."='".$value."'";
+        }
+        $query.=implode(" AND ",$whering);
+        try{
+            $result = $cdb->query($query)->fetchArray();
         } catch (\Throwable $th) {
             throw new Exception("Your DBNAME property is incorrect", 1);
         }
@@ -67,8 +83,12 @@ abstract class Model
     public function Add()
     {
         $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
-        $query = QueryBuilder::insert($this->DBNAME,$this->DataBody);
-        $return = null;
+        $keys = implode(",",array_keys($this->DataBody));
+        $values = "'".implode("','",$this->DataBody)."'";
+        $query = "
+            INSERT INTO {$this->TBNAME} ($keys)
+            VALUES ($values);
+            ";
         try{
             if ($cdb->query($query)) {
                 $return = $cdb->lastInsertID();
@@ -80,30 +100,33 @@ abstract class Model
         $cdb->close();
         return $return;
     }
-    public function Update()
+    public function Update($datas)
     {
         $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
-        $query = QueryBuilder::update($this->DBNAME,$this->DataBody,array('id'=>$this->id));
-        $return = null;
+        $items = [];
+        foreach ($datas as $key=>$value){
+            $items[] = $key." = ".$value;
+        }
+        $items = implode(",",$items);
+        $query = "UPDATE {$this->TBNAME} SET $items WHERE id={$this->id}";
         try{
             if ($cdb->query($query)) {
-                $return = $cdb->lastInsertID();
+                return ;
             }
         }catch(\Exception $e){
             throw new \Exception('Error: ' . $e->getMessage());
         }
 
         $cdb->close();
-        return $return;
     }
     public function Delete()
     {
         $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
-        $query = QueryBuilder::delete($this->DBNAME,array('id'=>$this->id));
+        $query = "DELETE FROM {$this->TBNAME} WHERE id={$this->id}";
         $return = null;
         try{
             if ($cdb->query($query)) {
-                $return = $cdb->lastInsertID();
+                return;
             }
         }catch(\Exception $e){
             throw new \Exception('Error: ' . $e->getMessage());

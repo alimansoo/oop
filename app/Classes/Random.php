@@ -1,6 +1,6 @@
 <?php
 namespace App\Classes;
-abstract class Randome
+abstract class Random
 {
     static function GenerateNumber($lengh=1){
         $str='1234567890';
@@ -14,7 +14,7 @@ abstract class Randome
         return $out;
     }
     static function GenerateParse($lengh=1){
-        $str='1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $str='1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghigklmnopqrtuyz';
         $strlenght = strlen($str);
         $out = '';
         for ($i=0; $i < $lengh; $i++) {
