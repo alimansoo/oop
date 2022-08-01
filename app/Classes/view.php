@@ -10,7 +10,7 @@ class View
     {
         include 'C:\xampp\htdocs\ElectronicShop\public\views\userpanel_view.php';
     }
-    static function IncludeAdminPage($view,$data=null)
+    static function IncludeAdminPage($view,$sidebar,$data=null)
     {
         include 'C:\xampp\htdocs\ElectronicShop\public\views\Page\AdminPage.php';
     }

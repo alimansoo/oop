@@ -1,5 +1,6 @@
 <?php
 use App\Models\Addrss;
+use App\Classes\Errore;
 $address = new Addrss();
 $AllAddress = $address->AllBy(
     ['UserId'=>$_SESSION['id']]
@@ -10,6 +11,7 @@ $AllAddress = $address->AllBy(
         <div class="card-body">
             <h5 class="auth-box_title">ثبت سفارش</h5>
             <form action="http://localhost/ElectronicShop/order" method="post">
+                <?php Errore::ShowErrore(); ?>
                 <div class="mb-4">
                     <label for="reciverName" class="">نام گیرنده سفارش</label>
                     <br>
@@ -28,16 +30,9 @@ $AllAddress = $address->AllBy(
                     </select>
                 </div>
                 <div class=" mb-4">
-                    <label for="Address">تاریخ تحویل سفارش</label>
+                    <label for="Address">ادرس تحویل سفارش</label>
                     <br>
-                    <select name="Address" id="Address">
-                        <?php
-                        foreach ($AllAddress as $address){
-                            $txtaddres = "شهر: ".$address['city'].",خیابان: ".$address['street'].",پلاک: ".$address['plate'];
-                            echo "<option value='{$address['id']}'>$txtaddres</option>";
-                        }
-                        ?>
-                    </select>
+                    <textarea name="Address" id="" cols="116" rows="5"></textarea>
                 </div>
 
 

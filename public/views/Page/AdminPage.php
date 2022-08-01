@@ -1,3 +1,7 @@
+<?php
+use App\models\User;
+use App\Classes\Sidebar;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,10 +47,10 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">خانه</a>
+                <a href="http://localhost/ElectronicShop/admin" class="nav-link">خانه</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">تماس</a>
+                <a href="http://localhost/ElectronicShop/logout" class="nav-link">خروج</a>
             </li>
         </ul>
 
@@ -175,7 +179,11 @@
                         <img src="https://www.gravatar.com/avatar/52f0fbcbedee04a121cba8dad1174462?s=200&d=mm&r=g" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">حسام موسوی</a>
+                        <a href="#" class="d-block">
+                            <?php
+                                $user = new User($_SESSION['email']);
+                                echo $user->FullName();
+                            ?></a>
                     </div>
                 </div>
 
@@ -184,8 +192,10 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                              with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview">
-                            <a href="http://localhost/ElectronicShop/admin" class="nav-link active">
+                        <li class="nav-item has-treeview <?php Sidebar::GroupList($sidebar,'dashboard');?>">
+
+                            <a href="http://localhost/ElectronicShop/admin" class="nav-link
+                            <?php Sidebar::GroupTitle($sidebar,'dashboard');?>">
                                 <i class="nav-icon fa fa-dashboard"></i>
                                 <p>
                                     داشبورد
@@ -193,8 +203,9 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item has-treeview <?php Sidebar::GroupList($sidebar,'users');?>">
+                            <a href="#" class="nav-link
+                            <?php Sidebar::GroupTitle($sidebar,'users');?>">
                                 <i class="nav-icon fa fa-dashboard"></i>
                                 <p>
                                     کاربران
@@ -203,21 +214,24 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="http://localhost/ElectronicShop/admin/listuser" class="nav-link">
+                                    <a href="http://localhost/ElectronicShop/admin/listuser" class="nav-link
+                                    <?php Sidebar::GroupItem($sidebar,'listusers');?>">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست کاربران</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="http://localhost/ElectronicShop/admin/listtypes" class="nav-link">
+                                    <a href="http://localhost/ElectronicShop/admin/listtypes" class="nav-link
+                                        <?php Sidebar::GroupItem($sidebar,'typesusers');?>">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>انواع کاربران</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item has-treeview <?php Sidebar::GroupList($sidebar,'products');?>">
+                            <a href="#" class="nav-link
+                                <?php Sidebar::GroupTitle($sidebar,'products');?>">
                                 <i class="nav-icon fa fa-pie-chart"></i>
                                 <p>
                                      محصولات
@@ -226,21 +240,24 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="http://localhost/ElectronicShop/admin/listproduct" class="nav-link">
+                                    <a href="http://localhost/ElectronicShop/admin/listproduct" class="nav-link
+                                    <?php Sidebar::GroupItem($sidebar,'listprouducts');?>">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست محصولات</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="http://localhost/ElectronicShop/admin/listcatgory" class="nav-link">
+                                    <a href="http://localhost/ElectronicShop/admin/listcatgory" class="nav-link
+                                    <?php Sidebar::GroupItem($sidebar,'categorys');?>">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>دسته بندی ها</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item has-treeview <?php Sidebar::GroupList($sidebar,'orders');?>">
+                            <a href="#" class="nav-link
+                            <?php Sidebar::GroupTitle($sidebar,'orders');?>">
                                 <i class="nav-icon fa fa-pie-chart"></i>
                                 <p>
                                      سفارشات
@@ -249,15 +266,17 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="http://localhost/ElectronicShop/admin/listorders" class="nav-link">
+                                    <a href="http://localhost/ElectronicShop/admin/listorders" class="nav-link
+                                    <?php Sidebar::GroupItem($sidebar,'listorders');?>">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>لیست سفارشات</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item has-treeview <?php Sidebar::GroupList($sidebar,'copons');?>">
+                            <a href="#" class="nav-link
+                            <?php Sidebar::GroupTitle($sidebar,'copons');?>">
                                 <i class="nav-icon fa fa-pie-chart"></i>
                                 <p>
                                      تخفيف
@@ -266,7 +285,9 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="http://localhost/ElectronicShop/admin/listproduct" class="nav-link">
+                                    <a href="http://localhost/ElectronicShop/admin/listproduct" class="nav-link
+                                    <?php if ($sidebar[1] === 'list') echo 'active';?>
+">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>كد تخفيف</p>
                                     </a>

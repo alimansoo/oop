@@ -40,7 +40,6 @@
                                         <span class="input-group-text">ریال</span>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="form-group">
                                 <label for="ProductCategory">دسته بندی</label>
@@ -52,7 +51,13 @@
                                     <option <?php if ($data->categoryId === 4) echo "selected"?> value="4">تبلت</option>
                                 </select>
                             </div>
-                            <img src="<?php echo $data->imgSrc;?>" width="50px">
+                            <div class="form-group">
+                                <label for="ProductPrice">تعداد محصول</label>
+                                <div class="input-group">
+                                    <input type="number" value="<?php echo $data->qty;?>" name="ProductQuantity" id="ProductQuantity" class="form-control" id="" placeholder="قیمت محصول را وارد کنید">
+                                </div>
+                            </div>
+                            <img src="<?php echo $data->imgSrc;?>" width="100px">
                             <div class="form-group">
                                 <label for="ProductImage">تصویر محصول</label>
                                 <div class="input-group">

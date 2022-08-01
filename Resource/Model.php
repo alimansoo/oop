@@ -19,9 +19,10 @@ abstract class Model
             return true;
         return false;
     }
-    public function All(){
+    public function All($limit=null){
         $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
         $query = "SELECT * FROM {$this->TBNAME}";
+
         try{
             $result = $cdb->query($query)->fetchAll();
         } catch (\Throwable $th) {
@@ -29,14 +30,62 @@ abstract class Model
         }
         return $result;
     }
-    public function AllBy($where){
+    public function count($where=null){
+        $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
+        $query = "SELECT COUNT(*) FROM {$this->TBNAME}";
+
+        if ($where!== null){
+            $query.=' WHERE ';
+            foreach ($where as $key=>$value){
+                if (is_array($value)){
+                    if (is_array($value[0]) || is_array($value[1])){
+                        foreach ($value as $key2=>$item){
+                            $whering[] = $key." $item[0] '".$item[1]."'";
+                        }
+                    }else{
+                        $whering[] = $key." $value[0] '".$value[1]."'";
+                    }
+                }else{
+                    $whering[] = $key." = '".$value."'";
+                }
+            }
+            $query.=implode(" AND ",$whering).';';
+        }
+
+//        echo '<pre>';
+//        echo $query;
+//        echo '</pre>';
+        try{
+            $result = $cdb->query($query)->fetchArray();
+        } catch (\Throwable $th) {
+            throw new Exception("Your DBNAME property is incorrect", 1);
+        }
+        return $result["COUNT(*)"];
+    }
+    public function AllBy($where,$limit=null){
         $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
         $query = "SELECT * FROM {$this->TBNAME} WHERE ";
         $whering = [];
         foreach ($where as $key=>$value){
-            $whering[] = $key."='".$value."'";
+            if (is_array($value)){
+                if (is_array($value[0]) || is_array($value[1])){
+                    foreach ($value as $key2=>$item){
+                        $whering[] = $key." $item[0] '".$item[1]."'";
+                    }
+                }else{
+                        $whering[] = $key." $value[0] '".$value[1]."'";
+                }
+            }else{
+                $whering[] = $key." = '".$value."'";
+            }
         }
-        $query.=implode(" AND ",$whering);
+        $query.=implode(" AND ",$whering).'';
+        if ($limit !== null){
+            $query.=" LIMIT {$limit[0]} OFFSET {$limit[1]}";
+        }
+//        echo '<pre>';
+//        echo $query;
+//        echo '</pre>';
         try{
             $result = $cdb->query($query)->fetchAll();
         } catch (\Throwable $th) {
@@ -105,10 +154,12 @@ abstract class Model
         $cdb = new db(__dbhost__,__dbusername__,__dbpassword__,__dbname__);
         $items = [];
         foreach ($datas as $key=>$value){
-            $items[] = $key." = ".$value;
+            $items[] = $key." = '".$value."'";
         }
         $items = implode(",",$items);
+
         $query = "UPDATE {$this->TBNAME} SET $items WHERE id={$this->id}";
+//        echo $query;
         try{
             if ($cdb->query($query)) {
                 return ;

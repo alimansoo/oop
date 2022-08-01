@@ -19,5 +19,7 @@
             "email": "92879191+alimansi1382@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "phpmailer/phpmailer": "^6.6"
+    }
 }

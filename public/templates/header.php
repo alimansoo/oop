@@ -17,42 +17,48 @@ $user = new User($_SESSION['email']);
         </div>
         <div class="navbar_side">
             <div class="navbar_actions d-inline-flex">
-                <div class="dropdown" id="headerDropdown">
+
                     <?php
                     if (Authentication::Logedin()) {
                         ?>
-                        <div class="dropdown">
-                            <a
-                                    class=""
-                                    href="#"
-                                    role="button"
-                                    id="dropdownMenuLink"
-                                    data-mdb-toggle="dropdown"
-                                    aria-expanded="false"
-                            >
-                                <i class="fas fa-user-circle fa-2x brd-left pl-1"></i>
-                            </a>
+                            <div class="dropdown" id="headerDropdown">
+                                <div class="dropdown">
+                                    <a
+                                        class=""
+                                        href="#"
+                                        role="button"
+                                        id="dropdownMenuLink"
+                                        data-mdb-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="fas fa-user-circle fa-2x brd-left pl-1"></i>
+                                    </a>
 
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="#"><strong><?php
-                                            echo $user->FullName();
-                                            ?></strong></a></li>
-                                <li><a class="dropdown-item" href="http://localhost/ElectronicShop/userpanel">حساب کاربری</a></li>
-                                <li><a class="dropdown-item" href="http://localhost/ElectronicShop/logout">خروج</a></li>
-                            </ul>
-                        </div>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#"><strong><?php
+                                                    echo $user->FullName();
+                                                    ?></strong></a></li>
+                                        <li><a class="dropdown-item" href="http://localhost/ElectronicShop/userpanel">حساب کاربری</a></li>
+                                        <li><a class="dropdown-item" href="http://localhost/ElectronicShop/logout">خروج</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         <?php
                     }else{
                         ?>
-                        <a href="http://localhost/ElectronicShop/login">
-                            <i class="fas fa-user-circle fa-2x brd-left pl-1"></i>
-                        </a>
+                            <div class="">
+                                <a href="http://localhost/ElectronicShop/login" style="margin-left: 8px;padding: 8px 18px;border: 1px solid;
+border-radius: 0.5rem;">
+                                    ورود
+                                </a>
+                            </div>
+
                         <?php
                     }
                     ?>
 
 
-                </div>
+
                 <a href="http://localhost/ElectronicShop/cart">
                     <div class="link modal-item" data-bind="modalcart">
                         <i class="fas fas fa-shopping-cart fa-2x pr-1 pos-rel">
